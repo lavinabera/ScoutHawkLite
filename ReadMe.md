@@ -2,8 +2,7 @@
 
 <div>
 <h3>ScoutHawkLite</h3>
-<p>Controls your external display brightness and volume and shows native OSD.
-Use menubar extra sliders or the keyboard, including native Apple keys!</p>
+<p>CScoutHawkLite lets you check CPU and RAM usage in real time, watch for file and folder changes, and easily see whether Monitorhawk has the required macOS permissions like Accessibility, Screen Recording, Input Monitoring, and Full Disk Access enabled.</p>
 <a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src=".github/apple_badge.png" width="175" alt="Download for macOS"/></a>
 </div>
 
@@ -22,7 +21,7 @@ Use menubar extra sliders or the keyboard, including native Apple keys!</p>
 
 </div>
 
-ScoutHawkLite — macOS System Monitor & Privacy Permission Guard
+ScoutHawkLite — macOS System Monitor & Privacy Permission Guard<br>
 ScoutHawkLite is a lightweight, efficient, and privacy-focused macOS utility that monitors CPU usage, memory consumption, file & folder changes, and the system’s Privacy & Security permission states including Accessibility, Screen Recording, Input Monitoring, and Full Disk Access.
 Designed for developers, security professionals, and users who need reliable, real-time insight into their Mac’s performance and integrity.
 
