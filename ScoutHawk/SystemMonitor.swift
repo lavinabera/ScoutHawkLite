@@ -208,7 +208,6 @@ class SystemMonitor {
         }
     }
 
-    // 폴더 내 파일 권한 변화 감시
     func monitorPermissions(folderPath: String) {
         isMonitoring = true
         
@@ -230,7 +229,7 @@ class SystemMonitor {
                 }
                     
                 
-                sleep(2)  // 주기적으로 검사
+                sleep(2)
             }
         }
     }
