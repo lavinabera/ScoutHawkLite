@@ -10,9 +10,9 @@ Use menubar extra sliders or the keyboard, including native Apple keys!</p>
 <br/><br/>
 
 <div align="center">
-<a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src="https://img.shields.io/github/downloads/ScoutHawkLite/ScoutHawkLite/total.svg?style=flat" alt="downloads"/></a>
-<a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src="https://img.shields.io/github/release-pre/ScoutHawkLite/ScoutHawkLite.svg?style=flat" alt="latest version"/></a>
-<a href="https://github.com/lavinabera/ScoutHawkLite/blob/master/License.txt"><img src="https://img.shields.io/github/license/ScoutHawkLite/ScoutHawkLite.svg?style=flat" alt="license"/></a>
+<a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src="https://img.shields.io/badge/download-ScoutHawkLite-blue" alt="downloads"/></a>
+<a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src="https://img.shields.io/badge/version-1.0.0-green" alt="latest version"/></a>
+<a href="https://github.com/lavinabera/ScoutHawkLite/blob/master/License.txt"><img src="https://img.shields.io/badge/license-swift%201.0-blue" alt="license"/></a>
 <a href="https://github.com/lavinabera/ScoutHawkLite"><img src="https://img.shields.io/badge/platform-macOS-blue.svg?style=flat" alt="platform"/></a>
 
 <br/>
