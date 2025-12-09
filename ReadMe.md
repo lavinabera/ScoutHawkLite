@@ -2,7 +2,7 @@
 
 <div>
 <h3>ScoutHawkLite</h3>
-<p>CScoutHawkLite lets you check CPU and RAM usage in real time, watch for file and folder changes, and easily see whether Monitorhawk has the required macOS permissions like Accessibility, Screen Recording, Input Monitoring, and Full Disk Access enabled.</p>
+<p>ScoutHawkLite lets you check CPU and RAM usage in real time, watch for file and folder changes, and easily see whether Monitorhawk has the required macOS permissions like Accessibility, Screen Recording, Input Monitoring, and Full Disk Access enabled.</p>
 <a href="https://github.com/lavinabera/ScoutHawkLite/releases"><img src=".github/apple_badge.png" width="175" alt="Download for macOS"/></a>
 </div>
 
