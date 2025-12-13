@@ -128,6 +128,7 @@ Troubleshooting
 <img src=".github/f1.png" width="392" alt="Screenshot"/>
 <img src=".github/f2.png" width="392" alt="Screenshot"/>
 <img src=".github/f3.png" width="392" alt="Screenshot"/>
+<img src=".github/f4.png" width="392" alt="Screenshot"/>
 </div>
 
 🚀 Roadmap

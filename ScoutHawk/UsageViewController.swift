@@ -6,18 +6,19 @@
 //
 
 import Cocoa
+import EventKit
 
 class UsageViewController: NSViewController {
     @IBOutlet weak var cpuLabel: NSTextField!
     @IBOutlet weak var ramLabel: NSTextField!
-
-    @IBOutlet weak var AccessSwitch: NSSwitch!
-    @IBOutlet weak var ScreenSwitch: NSSwitch!
-    @IBOutlet weak var InputSwitch: NSSwitch!
-    @IBOutlet weak var FDASwitch: NSSwitch!
     
+    @IBOutlet weak var AcessStatus: NSTextField!
+    @IBOutlet weak var ScrRecStatus: NSTextField!
+    @IBOutlet weak var InputStatus: NSTextField!
+    @IBOutlet weak var FDAStatus: NSTextField!
     
     @IBOutlet var logTextView: NSTextView!
+    @IBOutlet var eventsTextView: NSTextView!
     
     @IBOutlet weak var pathFileTextField: NSTextField!
     {
@@ -65,6 +66,50 @@ class UsageViewController: NSViewController {
         updateTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(updateUsagePeriodically), userInfo: nil, repeats: true)
     }
 
+    func display(events: [EKEvent]) {
+            DispatchQueue.main.async {
+                if events.isEmpty {
+                    self.eventsTextView.string = "There are no events today."
+                    return
+                }
+                
+                let formatter = DateFormatter()
+                formatter.dateStyle = .none
+                formatter.timeStyle = .short
+                
+                let lines = events.map { event -> String in
+                    let start = formatter.string(from: event.startDate)
+                    let end   = formatter.string(from: event.endDate)
+                    let location = event.location ?? ""
+                    
+                    if location.isEmpty {
+                        return "\(start)–\(end): \(event.title ?? "(No title)")"
+                    } else {
+                        return "\(start)–\(end): \(event.title ?? "(No title)") @ \(location)"
+                    }
+                }
+                
+                self.eventsTextView.string = lines.joined(separator: "\n")
+            }
+        }
+        
+        func updateEventInfo() {
+            let store = EKEventStore()
+            store.requestAccess(to: .event) { granted, error in
+                if granted {
+                    let calendar = Calendar.current
+                    let startOfDay = calendar.startOfDay(for: Date())
+                    let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+
+                    let predicate = store.predicateForEvents(withStart: startOfDay,
+                                                             end: endOfDay,
+                                                             calendars: nil)
+                    let events = store.events(matching: predicate)
+                    self.display(events: events)
+                }
+            }
+        }
+    
     @objc func updateUsagePeriodically() {
         let cpuUsage = SystemMonitor.getCPUUsage()
         let ramUsage = SystemMonitor.getMemoryUsage()
@@ -75,6 +120,8 @@ class UsageViewController: NSViewController {
         let hasInputPermission = SystemMonitor.checkInputMonitoringPermission()
         let hasFDAPermission = SystemMonitor.CheckFDAPermission()
         updatePrivacy(hasAccessPermission: hasAccessPermission, hasScreenPermission: hasScreenPermission, hasInputPermission: hasInputPermission, hasFDAPermission: hasFDAPermission)
+        
+        updateEventInfo()
     }
     
     @IBAction func browseFolder(_ sender: Any) {
@@ -103,6 +150,10 @@ class UsageViewController: NSViewController {
                 pathFileTextField.stringValue = url.path
                 logMessage("📂 Selected file: \(url.path)")
             }
+    }
+    
+    @IBAction func btnQuit(_ sender: Any) {
+        NSApp.terminate(nil)
     }
     
     @IBAction func stopMonitoring(_ sender: Any) {
@@ -141,38 +192,38 @@ class UsageViewController: NSViewController {
         
         if hasAccessPermission == true
         {
-            AccessSwitch.state = .on
+            AcessStatus.stringValue = String("Enabled")
         }
         else
         {
-            AccessSwitch.state = .off
+            AcessStatus.stringValue = String("Disabled")
         }
 
         if hasScreenPermission == true
         {
-            ScreenSwitch.state = .on
+            ScrRecStatus.stringValue = String("Enabled")
         }
         else
         {
-            ScreenSwitch.state = .off
+            ScrRecStatus.stringValue = String("Disabled")
         }
 
         if hasInputPermission == true
         {
-            InputSwitch.state = .on
+            InputStatus.stringValue = String("Enabled")
         }
         else
         {
-            InputSwitch.state = .off
+            InputStatus.stringValue = String("Disabled")
         }
 
         if hasFDAPermission == true
         {
-            FDASwitch.state = .on
+            FDAStatus.stringValue = String("Enabled")
         }
         else
         {
-            FDASwitch.state = .off
+            FDAStatus.stringValue = String("Disabled")
         }
     }
     
